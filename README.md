@@ -27,6 +27,29 @@ This project demonstrates advanced capabilities in Generative AI, Natural Langua
 
 ---
 
+## 🏗️ System Architecture
+
+```mermaid
+graph TD;
+    User[User/Recruiter] -->|Uploads PDF & Job Desc| UI[Streamlit Frontend];
+    UI --> Parser[PDF Text Parser];
+    Parser --> Splitter[Recursive Text Splitter];
+    Splitter --> Embed[HuggingFace Embeddings];
+    Embed --> DB[(ChromaDB Vector Store)];
+    
+    UI --> |Job Desc Query| LLM[Google Gemini AI];
+    DB -.-> |Retrieved CV Context| LLM;
+    
+    LLM --> |Match Score & Analysis| UI;
+    
+    subgraph MLOps
+      Docker --> CI[GitHub Actions]
+      CI --> GHCR[(GitHub Container Registry)]
+    end
+```
+
+---
+
 ## 🛠️ Technology Stack
 
 <p align="center">
