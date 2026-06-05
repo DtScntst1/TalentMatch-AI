@@ -8,17 +8,22 @@
 
 ## 🚀 Overview
 
-**TalentMatch AI** is a state-of-the-art AI application designed to evaluate a candidate's resume against a specific job description. By utilizing **Retrieval-Augmented Generation (RAG)** and **Google's Gemini Pro LLM**, the system extracts key information from PDFs, performs semantic similarity search using **ChromaDB**, and provides an intelligent evaluation report including a Match Score, Matched Skills, and Missing Skills.
+**TalentMatch AI** is a state-of-the-art AI application designed to evaluate a candidate's resume against a specific job description. By utilizing **Retrieval-Augmented Generation (RAG)** and **Google's Gemini API**, the system extracts key information from PDFs, performs semantic similarity search using **ChromaDB**, and provides an intelligent evaluation report including a Match Score, Matched Skills, and Missing Skills.
 
 This project demonstrates advanced capabilities in Generative AI, Natural Language Processing, and intelligent application architecture.
+
+<div align="center">
+  <img src="assets/screenshot.png" alt="TalentMatch AI Streamlit Dashboard" width="800"/>
+</div>
 
 ## 🌟 Key Features
 
 - **📄 Intelligent Document Parsing:** Automatically reads and chunks PDF resumes using `pypdf`.
 - **🧠 Advanced Vector Search (RAG):** Uses HuggingFace embeddings (`all-MiniLM-L6-v2`) and `ChromaDB` for highly accurate semantic search.
-- **🤖 LLM Integration:** Powered by `LangChain` and Google's `Gemini Pro` for expert-level HR evaluation.
+- **🤖 LLM Integration:** Powered by the official Google Generative AI SDK mapping directly to flash models for expert-level HR evaluation.
 - **📊 Dynamic Visualizations:** Beautiful interactive match score gauge generated with `Plotly`.
 - **🖥️ Clean UI:** Built entirely on `Streamlit` for a seamless user experience.
+- **🐳 MLOps Ready:** Fully containerized with **Docker** and automated via **GitHub Actions CI/CD pipeline** for testing and image deployment.
 
 ---
 
@@ -26,25 +31,32 @@ This project demonstrates advanced capabilities in Generative AI, Natural Langua
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=python,git,github,vscode&perline=14" />
+    <img src="https://skillicons.dev/icons?i=python,git,github,docker,vscode&perline=14" />
   </a>
 </p>
 
 - **Framework:** Streamlit
-- **AI/LLM Engine:** LangChain, Google Gemini Pro API
+- **AI/LLM Engine:** Google Gemini SDK, LangChain
 - **Embeddings:** HuggingFace Sentence Transformers
 - **Vector Database:** ChromaDB
-- **Data Visualization:** Plotly
+- **MLOps:** Docker, GitHub Actions (CI/CD)
 
 ---
 
 ## 💻 Getting Started
 
 ### Prerequisites
-- Python 3.9+
+- Python 3.11+ or Docker Desktop
 - A Free [Google Gemini API Key](https://aistudio.google.com/app/apikey)
 
-### Installation
+### Option 1: Running with Docker (Recommended)
+Since this project is fully containerized, you don't need to install any python packages manually.
+```bash
+docker pull ghcr.io/dtscntst1/talentmatch-ai:latest
+docker run -p 8501:8501 ghcr.io/dtscntst1/talentmatch-ai:latest
+```
+
+### Option 2: Installation Locally
 
 1. **Clone the repository:**
    ```bash
@@ -52,7 +64,7 @@ This project demonstrates advanced capabilities in Generative AI, Natural Langua
    cd TalentMatch-AI
    ```
 
-2. **Create a virtual environment (optional but recommended):**
+2. **Create a virtual environment:**
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
